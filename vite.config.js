@@ -7,5 +7,5 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: '/finance-assistant/', // ← base здесь, а не внутри plugins
+  base: '/finance-assistant/', 
 });

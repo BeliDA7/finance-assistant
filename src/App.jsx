@@ -8,12 +8,35 @@ import PaymentsTable from './components/PaymentsTable';
 import TuitionCalculator from './components/TuitionCalculator';
 import SimpleChart from './components/SimpleChart';
 import UpcomingPayments from './components/UpcomingPayments';
-import { user, initialInvoices, initialPayments, specialties } from './data/mockData.js';
+
+// Данные перенесены сюда
+const user = {
+  name: 'Иванов Иван Иванович',
+  group: 'Ф-18',
+  course: 1,
+  email: 'ivan.ivanov@akademy.ru',
+};
+
+const initialInvoices = [];
+const initialPayments = [];
+
+const specialties = {
+  'Лечебное дело': { semesters: 12, pricePerSemester: 60000 },
+  'Фармация': { semesters: 10, pricePerSemester: 55000 },
+  'Менеджмент': { semesters: 8, pricePerSemester: 45000 },
+  'Экономика': { semesters: 8, pricePerSemester: 40000 },
+  'Информатика': { semesters: 8, pricePerSemester: 50000 },
+  'Психология': { semesters: 8, pricePerSemester: 35000 },
+  'Юриспруденция': { semesters: 8, pricePerSemester: 42000 },
+  'Строительство': { semesters: 8, pricePerSemester: 38000 },
+  'Журналистика': { semesters: 8, pricePerSemester: 32000 },
+  'Дизайн': { semesters: 8, pricePerSemester: 48000 },
+};
 
 function App() {
   const [invoices, setInvoices] = useState(initialInvoices);
   const [payments, setPayments] = useState(initialPayments);
-  const [selectedSpecialty, setSelectedSpecialty] = useState('Менеджмент');
+  const [selectedSpecialty, setSelectedSpecialty] = useState('Лечебное дело');
   const [generatedPayments, setGeneratedPayments] = useState([]);
 
   useEffect(() => {
@@ -74,14 +97,12 @@ function App() {
     <div className="min-h-screen flex flex-col bg-gray-50">
       <Header />
       <main className="flex-1 container mx-auto px-4 md:px-6 py-4 md:py-6">
-        {/* Верхняя панель */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <ProfileCard user={user} />
           <UpcomingPayments payments={generatedPayments} historyPayments={payments} />
           <BalanceCard totalApproved={totalApproved} totalInvoices={totalInvoices} />
         </div>
 
-        {/* Калькулятор */}
         <div className="mb-6">
           <TuitionCalculator
             specialties={specialties}
@@ -91,7 +112,6 @@ function App() {
           />
         </div>
 
-        {/* Две таблицы */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <InvoicesTable
             invoices={invoices}
@@ -104,7 +124,6 @@ function App() {
           <PaymentsTable payments={payments} />
         </div>
 
-        {/* График */}
         <div className="mt-6">
           <SimpleChart payments={payments} />
         </div>
