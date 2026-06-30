@@ -8,7 +8,7 @@ import PaymentsTable from './components/PaymentsTable';
 import TuitionCalculator from './components/TuitionCalculator';
 import SimpleChart from './components/SimpleChart';
 import UpcomingPayments from './components/UpcomingPayments';
-import { user, initialInvoices, initialPayments, specialties } from './data/mockData';
+import { user, initialInvoices, initialPayments, specialties } from './data/mockData.js';
 
 function App() {
   const [invoices, setInvoices] = useState(initialInvoices);
